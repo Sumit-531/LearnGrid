@@ -1,7 +1,8 @@
 import express, { json, urlencoded } from "express";
 import mongoose from 'mongoose';
 import 'dotenv/config';
-import studentRoute from "./routes/student.routes.js"
+import studentRoute from "./routes/student.routes.js";
+import teacherRoute from "./routes/teacher.routes.js";
 
 
 
@@ -17,6 +18,7 @@ app.use(express.urlencoded({extended: false}));
 
 //routes
 app.use("/api/students", studentRoute);
+app.use("/api/teachers", teacherRoute);
 
 //testing
 app.get("/", (req,res)=>{
