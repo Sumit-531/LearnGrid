@@ -1,13 +1,13 @@
 import express, { json, urlencoded } from "express";
 import mongoose from 'mongoose';
-import 'dotenv/config';
+import { PORT, URI } from "./config/env.js";
 import studentRoute from "./routes/student.routes.js";
 import teacherRoute from "./routes/teacher.routes.js";
 
 
 
-const port = process.env.PORT;
-const uri = process.env.URI;
+// const port = process.env.PORT;
+// const uri = process.env.URI;
 
 const app = express();
 
@@ -29,11 +29,11 @@ app.get("/", (req,res)=>{
 
 
 // database connection
-mongoose.connect(uri)
+mongoose.connect(URI)
 .then(()=>{
     console.log("Connected to the database!");
-    app.listen(port, () =>{
-    console.log(`Server is running on port ${port}`);
+    app.listen(PORT, () =>{
+    console.log(`Server is running on port ${PORT}`);
 });
 })
 .catch(() =>{
