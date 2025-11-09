@@ -1,13 +1,8 @@
 import express, { json, urlencoded } from "express";
-import mongoose from 'mongoose';
-import { PORT, URI } from "./config/env.js";
+import { PORT } from "./config/env.js";
 import studentRoute from "./routes/student.routes.js";
 import teacherRoute from "./routes/teacher.routes.js";
-
-
-
-// const port = process.env.PORT;
-// const uri = process.env.URI;
+import connectDatabase from "./database/mongodb.js";
 
 const app = express();
 
@@ -23,19 +18,12 @@ app.use("/api/teachers", teacherRoute);
 //testing
 app.get("/", (req,res)=>{
     res.send("Hello from Node Server.");
-})
-
-
+});
 
 
 // database connection
-mongoose.connect(URI)
-.then(()=>{
-    console.log("Connected to the database!");
-    app.listen(PORT, () =>{
-    console.log(`Server is running on port ${PORT}`);
+app.listen(PORT, async () =>{
+    console.log(`LearnGrid API is running on http://localhost:${PORT}`);
+
+    await connectDatabase();
 });
-})
-.catch(() =>{
-    console.log("Connection failed!");
-})
