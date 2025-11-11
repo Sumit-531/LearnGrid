@@ -13,12 +13,12 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
-//custom middleware
-app.use(errorMiddleware);
-
 //routes
 app.use("/api/students", studentRoute);
 app.use("/api/teachers", teacherRoute);
+
+// error middleware
+app.use(errorMiddleware);
 
 //testing
 app.get("/", (req,res)=>{

@@ -11,4 +11,9 @@ config({ path: `.env.${process.env.NODE_ENV || 'development'}.local`});
 // Export PORT so other files can use it
 // This is a shortcut for:
 // export const PORT = process.env.PORT;
-export const { PORT, DB_URI, NODE_ENV} = process.env;
+export const { 
+    PORT, 
+    DB_URI, 
+    NODE_ENV,
+    JWT_SECRET, JWT_EXPIRES_IN
+} = process.env;
