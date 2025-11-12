@@ -14,8 +14,8 @@ app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
 //routes
-app.use("/api/students", studentRoute);
-app.use("/api/teachers", teacherRoute);
+app.use("/api/v1/students", studentRoute);
+app.use("/api/v1/teachers", teacherRoute);
 
 // error middleware
 app.use(errorMiddleware);
